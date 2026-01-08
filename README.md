@@ -6,7 +6,7 @@ Welcome to the page of my (W.I.P.) project called
 which is a smart clock that connects to a NTP server to get the current time. 
 It uses a ESP8266 (devboard: Wemos D1 mini, soon i will make it work also for ESP32).
 
-After it has synced with NTP server for the first time, it can work also in OFFLINE mode (even without using RTC module, that was present in the older version, but that i removed in the v2.0).
+After it has synced with NTP server for the first time, it can work also in OFFLINE mode (even without using RTC module, that was present in the older version, but then i removed in the v2.0).
 
 <img src="https://github.com/telepath9/ESPclock/blob/6b2b2224a42deda354a8a7220dcf724643eb9c2e/pics/pic1.jpg" alt="Alt Text" width="100%" height="100%">
 
