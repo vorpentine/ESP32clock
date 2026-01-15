@@ -2,7 +2,6 @@ Welcome to the page of my (W.I.P.) project called
 
 <img src="https://github.com/telepath9/ESPclock/blob/54c39c18d9204351de640fb42218651ce3664671/pics/newfont.png" alt="Alt Text" width="100%" height="100%">
 
-<h1>v2.0</h1>
 which is a smart clock that connects to a NTP server to get the current time. 
 It uses a ESP8266 (devboard: Wemos D1 mini, soon i will make it work also for ESP32).
 
@@ -10,7 +9,7 @@ After it has synced with NTP server for the first time, it can work also in OFFL
 
 <img src="https://github.com/telepath9/ESPclock/blob/6b2b2224a42deda354a8a7220dcf724643eb9c2e/pics/pic1.jpg" alt="Alt Text" width="100%" height="100%">
 
-<h2>🛠️ INSTRUCTIONS 🤖</h2>
+<h2>🛠️ INSTRUCTIONS </h2>
 
 1. Install VSCode or <b>VSCodium</b> (i prefer VSCodium because it basically is VSCode but <b>without</b> telemetry);
 
@@ -34,10 +33,10 @@ After it has synced with NTP server for the first time, it can work also in OFFL
 
 9. and we're done! Hope that you liked my project! If you have any suggestions, let me know!
 
-
+<h2>📱 WEB UI </h2>
 <img src="https://github.com/telepath9/ESPclock/blob/b7e9a17b113168cbe1b109e211301ea0b07abd35/pics/2.0.3.jpg" alt="Alt Text" width="100%" height="100%">
 
-<h2>📋FEATURES</h2>
+<h2>🤖 FEATURES </h2>
 <ul>
 <li>Asynchronous webserver</li>
 <li>Automatic Wifi Scan</li>
@@ -48,11 +47,11 @@ After it has synced with NTP server for the first time, it can work also in OFFL
 </ul>
 
 
-<h2>ESP8266 (Wemos D1 Mini 3.0.0 devboard) PINOUT</h2>
+<h2>🔌 ESP8266 (Wemos D1 Mini 3.0.0 devboard) PINOUT</h2>
 <img src="https://github.com/telepath9/ESPclock/blob/29cbf9b2a12f70d9c52a61b395483ac53f8dbaba/pics/esp8266_v2.0_pinout.jpg" alt="Alt Text" width="100%" height="100%">
 
 
-<h2>TROUBLESHOOTING</h2>
+<h2>⚠️ TROUBLESHOOTING</h2>
 There are (at the moment) two errors that can be displayed from the 7-segment display:
 <ul>
 <li>Err0 -> when "LittleFS.begin()" fails</li>
