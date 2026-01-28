@@ -59,7 +59,7 @@ After it has synced with NTP server for the first time, it can work also in OFFL
 </ul>
 
 
-<h2>🔌 ESP8266 PINOUT (Wemos D1 Mini 3.0.0 devboard)</h2>
+<h2>🔌 ESP8266 WIRING (Wemos D1 Mini 3.0.0 devboard)</h2>
 <img src="https://github.com/telepath9/ESPclock/blob/ebe4f234343fb306297fa49ef42fd830830b3c9a/pics/esp8266_pinout.jpg" alt="Alt Text" width="100%" height="100%">
 
 
