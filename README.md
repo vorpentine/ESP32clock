@@ -15,23 +15,23 @@ After it has synced with NTP server for the first time, it can work also in OFFL
 
 2. Install PIOarduino extension on VSCode/VSCodium;
 
-3. Download espclock.zip, extract it, then open in VSCode/VSCodium the espclock project directory;
+3. Download the latest .zip file that you can find in the "Release" section, extract it, then open in VSCode/VSCodium the ESPclock project directory;
 
-4. Select the pioarduino extension in VSCode/VSCodium, then you have to store the html page into the esp8266 flash memory in two steps:
+4. Select the PIOarduino extension in VSCode/VSCodium, then you have to store the html page into the esp8266 flash memory in two steps:
 	1. Platform -> Build filesystem image
 	2. Platform -> Upload filesystem image
 
-5. Now lets upload the C/C++ code. Again from the pioarduino extension in VSCode/VSCodium, go to:
+5. Now lets upload the C/C++ code. Again from the PIOarduino extension in VSCode/VSCodium, go to:
 	1. General -> Build
 	2. General -> Upload
 
-6. Now let's connect pc or mobile to the Espclock access point, with the password: waltwhite64
+6. Now let's connect PC or mobile to the ESPclock access point, with the password: waltwhite64
 
-7. After connecting to the AP, open your browser and paste in the address bar: http://192.168.4.1/
+7. After connecting to the ESPclock's AP, open your browser and paste in the address bar: http://192.168.4.1/
 
-8. From the web interface, first add your home network, then the NTP server that matches your region, plus the GMT/UTC offset hour(s).
+8. From the web UI, first add your home network, then the NTP server that matches your region, plus the GMT/UTC offset hour(s).
 
-9. and we're done! Hope that you liked my project! If you have any suggestions, let me know!
+9. And we're done! Hope that you liked my project! If you have any suggestions, let me know!
 
 <h2>📱 WEB UI </h2>
 <img src="https://github.com/telepath9/ESPclock/blob/34c6915141348c3f2546474637ee8ee67e9d2076/pics/2.0.3.jpg" alt="Alt Text" width="100%" height="100%">
@@ -52,10 +52,10 @@ After it has synced with NTP server for the first time, it can work also in OFFL
 <li>TM1637 module https://it.aliexpress.com/item/1005001582129952.html?spm=a2g0o.order_list.order_list_main.49.370e3696i4W9Sn&gatewayAdapt=glo2ita </li>
 <li>Dupont wires</li>
 <li>DG308 terminal block: x2</li>
-<li>female 8Pin header: x2</li>
+<li>Female 8Pin header: x2</li>
 <li>7x3cm perfboard: x1</li>
 <li>M2.5 nuts: x10</li>
-<li>single row female 5 PINS (for common GND): x1</li>
+<li>Single row female 5 PINS (for common GND): x1</li>
 </ul>
 
 
@@ -68,4 +68,6 @@ There are (at the moment) two errors that can be displayed from the 7-segment di
 <ul>
 <li>Err0 -> when "LittleFS.begin()" fails</li>
 <li>Err1 -> when "index.html" doesn't exists in flash memory (user forgot to upload it)</li>
+<li>Fake "Not connected" popup bug: i noticed that sometimes, after entering a correct password for an SSID, the popup says "Not connected" while, instead, esp8266 has succeed to connect.
+To check if you are connected or not when this bug happen, just reload the page: the frontend will check if Esp is connected and then update the UI. I'll investigate on this bug.</li>
 </ul>
