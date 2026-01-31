@@ -285,26 +285,19 @@ void setup() {
           Serial.println("Connection detected");
         });
 
-        //cambia route da wifi_check --> uicheck ? o altro
-        //oltre allo stato del wifi deve mandare anche le vars blink, br_auto, ...
-        server.on("/wifi_check", HTTP_GET, [](AsyncWebServerRequest *request){
+        //this one is triggered when entering to the webUI after the first time. It checks the status of all of the UI elements and updates it
+        server.on("/uicheck", HTTP_GET, [](AsyncWebServerRequest *request){
+       
+            JsonDocument uicheck_json;
 
-            //devo mandare 1 solo request->send con le vars nel json
-            /*
-            quindi sarà tipo:
-            conn: connected (che è 0 o 1... poi JS lo interpreta)
-            br_auto: ...
-            blink: ... 
-            
-            */
+            uicheck_json["conn"] = connected;
+            uicheck_json["br_auto"] = br_auto;
+            uicheck_json["blink"] = blink;
 
-            if(connected==1){
-              request->send(200,  "application/json", "{\"conn\":\"true\"}"); 
-            }
+            String uc_str;
+            serializeJson(uicheck_json, uc_str);
 
-            else{
-              request->send(200,  "application/json", "{\"conn\":\"false\"}"); 
-            }
+            request->send(200,  "application/json", uc_str); 
         });
 
           
@@ -315,7 +308,7 @@ void setup() {
             //checks json integrity
             if(!f) {
                 Serial.println("Error opening /network_list.json");
-                request->send(500, "application/json", "{\"error\":\"Failed to open network_list.json\"}");
+                request->send(500, "application/json", "{\"error\":\"Failed to open config.json\"}");
                 return;
             }
 
@@ -354,7 +347,7 @@ void setup() {
           //check json integrity
           if(!f) {
             Serial.println("Error opening /network_list.json");
-            request->send(500, "application/json", "{\"error\":\"Failed to open config.json\"}");
+            request->send(500, "application/json", "{\"error\":\"Failed to open network_list.json\"}");
             return;
           }
 
@@ -437,9 +430,9 @@ void setup() {
 
             JsonDocument br_auto_json;
             deserializeJson(br_auto_json, data);
-            br_auto = (uint8_t)br_auto_json["bl"];  //update blink var
+            br_auto = br_auto_json["br"];
 
-            //i should replace it with a switch-case
+            //should i replace it with a switch-case (?)
             if(timeClient.getHours() >= 0 && timeClient.getHours() < 9){
               mydisplay.setBrightness(0);
               request->send(200, "application/json", "{\"status\":\"0\"}");

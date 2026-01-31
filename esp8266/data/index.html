@@ -358,7 +358,7 @@ text-align: center;*/
                     <label style="display: flex; align-items: center; justify-content: space-between; margin:4px 0px 20px 0px;" class="blinky">
                     <p style="font-size: 17px; margin:0px 0px 2px 26px;">Brightness (auto)</p>
                     <label class="switch">
-                        <input id="bright_togg" type="checkbox">
+                        <input id="bright_auto" type="checkbox">
                         <span class="slider round"></span>
                     </label>
                     </label>
@@ -366,14 +366,14 @@ text-align: center;*/
                     <label style="display: flex; align-items: center; justify-content: space-between; margin:4px 0px 20px 0px;" class="blinky">
                     <p style="font-size: 17px; margin:0px 0px 2px 26px;">Blinking colon</p>
                     <label class="switch">
-                        <input id="blink_togg" type="checkbox" checked>
+                        <input id="blink_togg" type="checkbox" checked> <!--check è un attributo??-->
                         <span class="slider round"></span>
                     </label>
                     </label>
 
                 </div>
             
-            <p style=" margin: 4px 12px 0px 12px; ; color:#dee2e6">ESPclock v2.0.3 - A project by <strong>telepath</strong>
+            <p style=" margin: 4px 12px 0px 12px; ; color:#dee2e6">ESPclock v2.0.4 - A project by <strong>telepath</strong>
     </div>
                
 <svg style="display: none;">
@@ -464,11 +464,15 @@ text-align: center;*/
         networkFetch("/scan");        
 
         //if ESP is already connected, setup page is loaded with wifi settings greyed-out and disabled    
-        fetch("/wifi_check")
+        fetch("/uicheck")
             .then(data=> data.json())
             .then(data=> {
 
-            if(data.conn === "true"){
+                console.log(data.conn);
+                console.log(data.br_auto);
+                console.log(data.blink);
+                                     
+            if(data.conn === true){  
                 disable_connect_but();
                 connect_but.innerHTML = "CONNECTED";
                 connect_but.style.backgroundColor ="#52885d";
@@ -479,17 +483,17 @@ text-align: center;*/
                 update_but.style.cursor = "pointer";
                 update_but.style.backgroundColor= "#267bbc";
 
-                //questa funzione va estesa sia qui che in .cpp: il json che riceve il client avrà diverse entry per aggiornare i  
-                //vari elementi nella UI, per  esempio: Wifi_conn: true; blink: true/false; br_auto: true/false,... 
             }
 
-            /*
-            else if(data.br_auto){ //aggiusta
+            if(data.br_auto ===true){
+                slider.setAttribute("disabled", "");
+                bright_auto.setAttribute("checked", "");
+            }
 
+            if(data.blink === false){
+                blink.removeAttribute("checked", "");
 
-
-            }*/
-
+            }
 
         });
     }
@@ -576,34 +580,29 @@ text-align: center;*/
                             .then((data) => { 
                                 
                                 console.log("data.stat:", data.stat);
-                                
-                                //if(data.stat==="wait" ){
-                                  //  console.log("trying to connect");
-                                   
-                                //}
 
                                 if(data.stat==="ok" ){
-                                //console.log("timer_deleted!");
-                                clearInterval(interval_obj);
+                                    //console.log("timer_deleted!");
+                                    clearInterval(interval_obj);
 
-                                connected = true;
-                                //console.log("CONNECTED! - should SHOW POPUP");
+                                    connected = true;
+                                    //console.log("CONNECTED! - should SHOW POPUP");
 
-                                clearInterval(asciivar);
-                                connect_but.innerHTML = "CONNECTED";
-                                connect_but.style.backgroundColor ="#52885d";
+                                    clearInterval(asciivar);
+                                    connect_but.innerHTML = "CONNECTED";
+                                    connect_but.style.backgroundColor ="#52885d";
 
-                                popup_span_elem.innerHTML = "CONNECTED✅";
-                                popup_span_elem.classList.add("show");
+                                    popup_span_elem.innerHTML = "CONNECTED✅";
+                                    popup_span_elem.classList.add("show");
 
-                                //activated update button
-                                update_but.removeAttribute("disabled");
-                                update_but.style.cursor = "pointer";
-                                update_but.style.backgroundColor= "#267bbc";
+                                    //activated update button
+                                    update_but.removeAttribute("disabled");
+                                    update_but.style.cursor = "pointer";
+                                    update_but.style.backgroundColor= "#267bbc";
 
-                                setTimeout(()=>{
-                                    popup_span_elem.classList.remove("show");
-                                }, 4900);     //popup fades out after 4900ms
+                                    setTimeout(()=>{
+                                        popup_span_elem.classList.remove("show");
+                                    }, 4900);     //popup fades out after 4900ms
                             }
                                 
                                 else if(data.stat==="fail" ){
@@ -631,8 +630,7 @@ text-align: center;*/
                             }
                           })
                         }, 3000);
-        }
-      //END POLLING funct def 
+        }//END POLLING funct def 
       
       connect_but.onclick = function(){
    
@@ -675,8 +673,7 @@ text-align: center;*/
                 .then((response)=> {
                             
                         //console.log(response.creds);
-                        //polling start after client sends credentials to server 
-                        //console.log("polling_state set to TRUE");
+                        //polling starts after the client sends credentials to server 
                         polling_state = true;
                 });
 
@@ -758,18 +755,19 @@ text-align: center;*/
                 });         
             }
 
-            const bright_togg = document.getElementById("bright_togg");   //[OK]
+            const bright_auto = document.getElementById("bright_auto");   //[OK]
 
-            bright_togg.onchange = function(){      
+            bright_auto.onchange = function(){      
                 
-                let ubright = this.checked ? slider.setAttribute("disabled", "") : slider.removeAttribute("disabled", "");
-        
+                this.checked ? slider.setAttribute("disabled", "") : slider.removeAttribute("disabled", "");
+                let br_a = this.checked ? true : false;
+                
                 fetch("/br_auto", {
                     method: "POST",
                     headers: {
                         'Content-Type': "application/json"
                     },            
-                    body: JSON.stringify({"br": ubright}) 
+                    body: JSON.stringify({"br": br_a}) 
                 })
 
                 .then(response => response.json())
@@ -778,7 +776,6 @@ text-align: center;*/
                     br_tag.textContent = response.status;
                 });         
             }
-
 </script>      
 </body>
 </html>
