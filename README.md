@@ -5,8 +5,6 @@ Welcome to the page of my (W.I.P.) project called
 which is a smart clock that connects to a NTP server to get the current time. 
 It uses a ESP8266 (devboard: Wemos D1 mini, soon i will make it work also for ESP32).
 
-After it has synced with NTP server for the first time, it can work also in OFFLINE mode (even without using RTC module, that was present in the older version, but then i removed in the v2.0).
-
 <img src="https://github.com/telepath9/ESPclock/blob/6b2b2224a42deda354a8a7220dcf724643eb9c2e/pics/pic1.jpg" alt="Alt Text" width="100%" height="100%">
 
 <h2>📜 INSTRUCTIONS </h2>
@@ -43,7 +41,16 @@ After it has synced with NTP server for the first time, it can work also in OFFL
 <li>Wifi and NTP server setup via web UI</li>
 <li>Automatic Brightness mode</li>
 <li>Blinking colon toggle</li>
-<li>...other features are coming soon!</li>
+</ul>
+
+<h2>🧰 NEW FEATURES TO ADD</h2>
+<ul>
+<li>🔳 ESP32 port</li>
+<li>🔳 Alarm clock mode with buzzer</li>
+<li>🔳 Display uptime in webUI</li>
+<li>🔳 Remember/forget configuration and credentials</li>
+<li>🔳 Adding 1 or 2 buttons to the case</li>
+<li>...</li>
 </ul>
 
 <h2>🪛 PART LIST</h2>
@@ -51,8 +58,8 @@ After it has synced with NTP server for the first time, it can work also in OFFL
 <li>Wemos D1 MINI (mine is V3.0.0 clone)</li>
 <li>TM1637 module https://it.aliexpress.com/item/1005001582129952.html?spm=a2g0o.order_list.order_list_main.49.370e3696i4W9Sn&gatewayAdapt=glo2ita </li>
 <li>Dupont wires</li>
-<li>DG308 terminal block: x2</li>
-<li>Female 8Pin header: x2</li>
+<li>DG308 8pins terminal block: x2</li>
+<li>Female 8pins header: x2</li>
 <li>7x3cm perfboard: x1</li>
 <li>M2.5 screws: x10</li>
 <li>M2.5 nuts: x2</li>
@@ -69,6 +76,10 @@ There are (at the moment) two errors that can be displayed from the 7-segment di
 <ul>
 <li>Err0 -> when "LittleFS.begin()" fails</li>
 <li>Err1 -> when "index.html" doesn't exists in flash memory (user forgot to upload it)</li>
+</ul>
+
+<h2>🪲 KNOWN BUGS</h2>	
+<ul>
 <li>Fake "Not connected" popup bug: it may happen (very rarely), that after entering a correct password for a SSID, the popup says "Not connected" while, instead, esp8266 has succeed to connect.
 To check if you are connected or not when this bug happens, just reload the page: the frontend will check if Esp is connected and then update the UI. I'll investigate on this bug.</li>
 </ul>
