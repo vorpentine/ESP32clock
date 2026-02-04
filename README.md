@@ -71,6 +71,8 @@ It uses a ESP8266 (devboard: Wemos D1 mini, soon i will make it work also for ES
 <h2>🔌 ESP8266 WIRING (Wemos D1 Mini 3.0.0 devboard)</h2>
 <img src="https://github.com/telepath9/ESPclock/blob/ebe4f234343fb306297fa49ef42fd830830b3c9a/pics/esp8266_pinout.jpg" alt="Alt Text" width="100%" height="100%">
 
+<h2>🪛 HOW TO ASSEMBLE ESPclock</h2>
+<img src="https://github.com/telepath9/ESPclock/blob/fc197cfd72fc6f489c0196dcbc484aab385d8b21/pics/howtoassemble.webp" alt="Alt Text" width="100%" height="100%">
 
 <h2>⚠️ TROUBLESHOOTING</h2>
 There are (at the moment) two errors that can be displayed from the 7-segment display:
