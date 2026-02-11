@@ -6,6 +6,8 @@ which is a smart clock that connects to a NTP server to get the current time.
 It uses a ESP8266 (devboard: Wemos D1 mini, soon i will make it work also for ESP32).
 
 <img src="https://github.com/telepath9/ESPclock/blob/6b2b2224a42deda354a8a7220dcf724643eb9c2e/pics/pic1.jpg" alt="Alt Text" width="100%" height="100%">
+<img src="https://github.com/telepath9/ESPclock/blob/d3ea40822622406152dad12554adbceba28abb7e/pics/espclock_bold.jpg" alt="Alt Text" width="100%" height="100%">
+(ESPclock <b>BOLD</b> coming soon... 😉)
 
 <h2>📜 INSTRUCTIONS </h2>
 
@@ -46,6 +48,7 @@ It uses a ESP8266 (devboard: Wemos D1 mini, soon i will make it work also for ES
 <h2>🧰 NEW FEATURES TO ADD</h2>
 <ul>
 <li>🔳 ESP32 port</li>
+<li>🔳 Replace NTPclient.h with ESP standard NTP functionality (no libraries to include!)<\li>	
 <li>🔳 Alarm clock mode with buzzer</li>
 <li>🔳 Display uptime in webUI</li>
 <li>🔳 Remember/forget configuration and credentials</li>
