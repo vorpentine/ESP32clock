@@ -34,13 +34,14 @@ It uses a ESP8266 (devboard: Wemos D1 mini, soon i will make it work also for ES
 9. And we're done! Hope that you liked my project! If you have any suggestions, let me know!
 
 <h2>📱 WEB UI </h2>
-<img src="https://github.com/telepath9/ESPclock/blob/34c6915141348c3f2546474637ee8ee67e9d2076/pics/2.0.3.jpg" alt="Alt Text" width="100%" height="100%">
+<img src="https://github.com/telepath9/ESPclock/blob/4d5b517d9cb80707b275a74371fc66d4375e1897/pics/espclock2.1.png" alt="Alt Text" width="100%" height="100%">
 
 <h2>🤖 FEATURES </h2>
 <ul>
 <li>Asynchronous webserver</li>
 <li>Automatic Wifi Scan</li>
 <li>Wifi and NTP server setup via web UI</li>
+<li>Save/delete configuration (to restore data after reboot)</li>
 <li>Automatic Brightness mode</li>
 <li>Blinking colon toggle</li>
 </ul>
@@ -51,7 +52,6 @@ It uses a ESP8266 (devboard: Wemos D1 mini, soon i will make it work also for ES
 <li>🔳 Replace NTPclient.h with ESP standard NTP functionality (no libraries to include!)<\li>	
 <li>🔳 Alarm clock mode with buzzer</li>
 <li>🔳 Display uptime in webUI</li>
-<li>🔳 Remember/forget configuration and credentials</li>
 <li>🔳 Adding 1 or 2 buttons to the case</li>
 <li>🔳 ESPhome or Homeassistant integration</li>
 <li>🔳 HA support</li>
